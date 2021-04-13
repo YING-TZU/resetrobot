@@ -5,6 +5,24 @@
 <robot
   name="resetrobot">
   <link
+    name="world"/>
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+    </inertial>
+  <joint
+    name="fixed"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="world" />
+    <child
+      link="base_link" />
+  </joint>
+  <link
     name="base_link">
     <inertial>
       <origin
@@ -21,6 +39,7 @@
         izz="0.50173" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -61,6 +80,7 @@
         izz="0.48216" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -119,6 +139,7 @@
         izz="0.86172" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -177,6 +198,7 @@
         izz="0.10657" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -235,6 +257,7 @@
         izz="0.020021" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -293,6 +316,7 @@
         izz="0.00339" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -351,6 +375,7 @@
         izz="0.00036354" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -409,6 +434,7 @@
         izz="3.727E-05" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -434,7 +460,7 @@
   </link>
   <joint
     name="last_joint"
-    type="continuous">
+    type="fixed">
     <origin
       xyz="0.0018 0 0.05397"
       rpy="0 0.03334 0" />
@@ -450,4 +476,37 @@
       effort="0"
       velocity="0" />
   </joint>
+  <!-- Gazebo-specific link properties  -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_1">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_2">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>  
+  <gazebo reference="link_3">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_4">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_5">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_6">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="last_link">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
 </robot>
