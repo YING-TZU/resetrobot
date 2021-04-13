@@ -5,6 +5,24 @@
 <robot
   name="resetrobot">
   <link
+    name="world"/>
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+    </inertial>
+  <joint
+    name="fixed"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="world" />
+    <child
+      link="base_link" />
+  </joint>
+  <link
     name="base_link">
     <inertial>
       <origin
@@ -21,6 +39,7 @@
         izz="0.50173" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -61,6 +80,7 @@
         izz="0.48216" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -119,6 +139,7 @@
         izz="0.86172" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -177,6 +198,7 @@
         izz="0.10657" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -235,6 +257,7 @@
         izz="0.020021" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -293,6 +316,7 @@
         izz="0.00339" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -351,6 +375,7 @@
         izz="0.00036354" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -409,6 +434,7 @@
         izz="3.727E-05" />
     </inertial>
     <visual>
+      <pose>0 0 0 0 0 0</pose>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -434,7 +460,7 @@
   </link>
   <joint
     name="last_joint"
-    type="continuous">
+    type="fixed">
     <origin
       xyz="0.0018 0 0.05397"
       rpy="0 0.03334 0" />
@@ -450,4 +476,120 @@
       effort="0"
       velocity="0" />
   </joint>
+  <!-- Gazebo-specific link properties  -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_1">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_2">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>  
+  <gazebo reference="link_3">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_4">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_5">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_6">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>ERROR: the following packages/stacks could not have their rosdep keys resolved
+to system dependencies:
+resetrobot: Cannot locate rosdep definition for [joint_state_spawner]
+
+  <gazebo reference="last_link">
+    <material>Gazebo/Gray</material>
+    <turnGravityOff>True</turnGravityOff>
+  </gazebo>
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/resetrobot</robotNamespace>
+      <robotParam>/resetrobot/robot_description</robotParam>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+        <robotNamespace>/resetrobot</robotNamespace>
+        <jointName>${base_link}, 
+                   ${link_1}, 
+                   ${link_2},
+                   ${link_3}, 
+                   ${link_4}, 
+                   ${link_5}, 
+                   ${link_6}, 
+        </jointName>
+    </plugin>    
+  </gazebo>
+
+    <transmission name="trans_joint_1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_1_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_2">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_2_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_3">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_3_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_4">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_4_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_5">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_5_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_6">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_6_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
 </robot>
